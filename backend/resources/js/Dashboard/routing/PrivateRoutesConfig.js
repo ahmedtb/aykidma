@@ -49,7 +49,7 @@ export default [
         path: Routes.CategoriesScreen(),
         title: 'CategoriesScreen',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -58,7 +58,7 @@ export default [
         path: Routes.showProvider(),
         title: 'ServiceProviderShow',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -67,7 +67,7 @@ export default [
         path: Routes.providerEnrollmentRequestsIndex(),
         title: 'providerEnrollmentRequestsIndex',
         permission: [
-            Roles.ADMIN
+            // Roles.ADMIN
         ],
         exact: true
     },
@@ -76,7 +76,7 @@ export default [
         path: Routes.serviceProvidersIndex(),
         title: 'ServiceProvidersIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -88,7 +88,7 @@ export default [
         path: Routes.approvedServicesIndex(),
         title: 'ApprovedServicesIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -98,7 +98,7 @@ export default [
         path: Routes.notApprovedServicesIndex(),
         title: 'NotApprovedServicesIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -108,7 +108,7 @@ export default [
         path: Routes.newOrders(),
         title: 'NewOrdersIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -117,7 +117,7 @@ export default [
         path: Routes.resumedOrders(),
         title: 'ResumedOrdersIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -126,7 +126,7 @@ export default [
         path: Routes.doneOrders(),
         title: 'DoneOrdersIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -135,7 +135,7 @@ export default [
         path: Routes.reviewsIndex(),
         title: 'ReviewsIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -144,7 +144,7 @@ export default [
         path: Routes.showOrder(),
         title: 'OrderShow',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -153,7 +153,7 @@ export default [
         path: Routes.showService(),
         title: 'ServiceShow',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -163,7 +163,7 @@ export default [
         path: Routes.usersIndex(),
         title: 'UsersIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -173,7 +173,7 @@ export default [
         path: Routes.showUser(),
         title: 'UserShow',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -183,7 +183,7 @@ export default [
         path: Routes.reportsIndex(),
         title: 'ReportsIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -193,7 +193,7 @@ export default [
         path: Routes.showReport(),
         title: 'ReportShow',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -202,7 +202,7 @@ export default [
         path: Routes.userNotificationsIndex(),
         title: 'UserNotificationsIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },
@@ -211,7 +211,7 @@ export default [
         path: Routes.providerNotificationsIndex(),
         title: 'ProviderNotificationsIndex',
         permission: [
-            Roles.ADMIN,
+            // Roles.ADMIN,
         ],
         exact: true,
     },

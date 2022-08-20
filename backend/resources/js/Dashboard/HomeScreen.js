@@ -13,7 +13,7 @@ export default function HomeScreen(props) {
             async () => await Api.home(),
             setdata,
             'HomeScreen',
-            true
+            false
         )
     }, [])
 

@@ -1,5 +1,8 @@
 import React from 'react'
-import { Link, matchPath } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+// import { matchPath } from 'react-router'
+import { LinkContainer } from 'react-router-bootstrap'
+import pathInRoutes from '../utility/pathInRoutes'
 
 function AllowedLink(props) {
     const to = props.to
@@ -7,35 +10,21 @@ function AllowedLink(props) {
     const className = props.className
     const target = props.target
 
-    const hide = props.hide
+    const displayChildrenOnly = props.displayChildrenOnly
+    const container = props.container
 
     const allowedRoutes = props.allowedRoutes
 
-    function isPathAllowed(path) {
-        if (allowedRoutes.length) {
-            for (let i = 0; i < allowedRoutes.length; i++) {
-                if (matchPath(path, {
-                    path: allowedRoutes[i].path,
-                    exact: true,
-                }) || matchPath(path.pathname, {
-                    path: allowedRoutes[i].path,
-                    exact: true,
-                })) {
-                    return true
-                }
-            }
-            return false
-        } else
-            return false
-    }
-
-    React.useEffect(() => { }, [allowedRoutes])
-
-    return (
-        isPathAllowed(to) ?
-            <Link target={target} className={className} to={to}>{children}</Link>
-            : (hide ? null : <div className={className}>{children}</div>)
+    return !pathInRoutes(allowedRoutes, to) ? (
+        displayChildrenOnly ?
+            <div>{children}</div> : null
     )
+        :
+        (container ?
+            <LinkContainer target={target} className={className} to={to}>{children}</LinkContainer>
+            :
+            <Link target={target} className={className} to={to}>{children}</Link>)
+
 
 }
 
@@ -44,6 +33,8 @@ import { connect } from "react-redux"
 const mapStateToProps = state => {
     return {
         allowedRoutes: state.state.allowedRoutes,
+        admin: state.state.admin,
+
     }
 }
 

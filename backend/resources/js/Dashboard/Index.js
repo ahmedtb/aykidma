@@ -19,7 +19,7 @@ export default function Index() {
                 <div className="container-fluid">
                     <Row>
                         <SideMenue />
-                        <Col xs={9}>
+                        <Col xs={10}>
                             <AllowedRoutes />
                         </Col>
                     </Row>

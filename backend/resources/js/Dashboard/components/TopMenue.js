@@ -56,7 +56,7 @@ function AuthComponent(props) {
                 ) : (
                     <>
                         <li className="nav-item">
-                            <AllowedLink hide={true} className="nav-link mx-2" to={Routes.LoginPageScreen}>{'تسجيل الدخول'}</AllowedLink>
+                            <AllowedLink hide={true} className="nav-link mx-2" to={Routes.LoginPageScreen()}>{'تسجيل الدخول'}</AllowedLink>
                         </li >
 
                         {/* <li className="nav-item">
@@ -80,53 +80,7 @@ import {
 function TopMenue(props) {
     const allowedRoutes = props.allowedRoutes
 
-    function AllowedMenue(props) {
-        const label = props.label
-        const links = props.links
-        const [FilteredLinks, setFilteredLinks] = React.useState([])
-
-        function isPathAllowed(path) {
-            if (allowedRoutes.length) {
-                for (let i = 0; i < allowedRoutes.length; i++) {
-                    if (allowedRoutes[i].path == path) {
-                        return true
-                    }
-                }
-                return false
-            } else
-                return false
-        }
-
-        React.useEffect(() => {
-            let filteredlinks = []
-            for (let i = 0; i < links.length; i++) {
-                if (isPathAllowed(links[i].to)) {
-                    filteredlinks.push(links[i])
-                }
-            }
-            setFilteredLinks(filteredlinks)
-            // console.log('FilteredLinks',filteredlinks)
-        }, [links])
-
-        return (
-
-            FilteredLinks.length ?
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle d-flex flex-row align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {label}
-                    </a>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {
-                            FilteredLinks.map((link, index) => {
-                                return (
-                                    <Link key={index} className="dropdown-item" to={link.to}>{link.label}</Link>
-                                )
-                            })
-                        }
-                    </ul>
-                </li> : null
-        )
-    }
+    
 
 
     return (
