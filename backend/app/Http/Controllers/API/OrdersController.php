@@ -7,17 +7,20 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Offer;
 use App\Models\Order;
+use App\Models\Review;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\ServiceProvider;
 use App\Rules\ArrayOfFieldsRule;
 use App\FieldsTypes\ArrayOfFields;
 use App\Http\Controllers\Controller;
-use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\user\OrderAccpeted;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\MessageNotification;
 use Illuminate\Validation\ValidationException;
+use App\Notifications\provider\NewOrderCreated;
+use App\Notifications\Provider\OrderMarkedAsDone;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class OrdersController extends Controller
@@ -61,13 +64,13 @@ class OrdersController extends Controller
             throw ValidationException::withMessages(['user' => 'you can not submit to your service provider services!!']);
 
 
-        Order::create([
+        $order = Order::create([
             'service_id' => $request->service_id,
             'user_id' => $request->user('user')->id,
             'array_of_fields' => ArrayOfFields::fromArray($request->array_of_fields),
             'status' => 'new'
         ]);
-        $service->ServiceProvider->notify(new MessageNotification('you have new order', 'order by: ' . $request->user('user')->id, 'provider'));
+        $service->ServiceProvider->notify(new NewOrderCreated($request->user('user'), $order));
 
         return ['success' => 'تم تقديم الطلب'];
     }
@@ -88,7 +91,7 @@ class OrdersController extends Controller
         if ($order) {
             $order->status = 'resumed';
             $order->save();
-            $order->user->notify(new MessageNotification('your order is accepted', 'order: ' . $order->id, 'user'));
+            $order->user->notify(new OrderAccpeted($order, $request->user('provider')));
             return response(['success' => 'order successfully resumed']);
         } else
             return response(['failed' => 'there is no a new order that belongs to you with this id'], 400);
@@ -113,14 +116,14 @@ class OrdersController extends Controller
                     'rating' => $request->rating,
                 ]);
             }
-            $order->provider->notify(new MessageNotification('your order is done by user', 'order: ' . $order->id, 'provider'));
+            $order->provider->notify(new OrderMarkedAsDone($request->user('user'), $order));
             $order->save();
             return response(['success' => 'order successfully marked as done']);
         } else
             return response(['failed' => 'there is no a resumed order that belongs to you with this id'], 400);
     }
 
- 
+
 
     /**
      * Store a newly created resource in storage.

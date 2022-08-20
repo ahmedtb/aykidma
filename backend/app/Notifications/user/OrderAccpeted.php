@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderResumed extends Notification
+class OrderAccpeted extends Notification
 {
     use Queueable;
 
@@ -46,7 +46,7 @@ class OrderResumed extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'title' => 'your order is resoumed', 
+            'title' => 'your order is accepted', 
             'body' => 'order: ' . $this->order->id, 'user',
             'redirectTo' => ''
         ];

@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Support\Facades\Http;
 
-class ExpoDatabaseChannel
+class ExpoChannel
 {
 
     public function send($notifiable, $notification)

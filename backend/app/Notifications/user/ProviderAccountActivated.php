@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ProviderAcountActivated extends Notification
+class ProviderAccountActivated extends Notification
 {
     use Queueable;
 

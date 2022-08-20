@@ -10,6 +10,8 @@ use App\Models\ProviderEnrollmentRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\MessageNotification;
 use App\Filters\ProviderEnrollmentRequestFilters;
+use App\Notifications\user\ProviderAccountActivated;
+use App\Notifications\user\ProviderEnrolled;
 use Illuminate\Validation\ValidationException;
 
 class ProvidersController extends Controller
@@ -34,7 +36,7 @@ class ProvidersController extends Controller
         $enrollmentRequest = ProviderEnrollmentRequest::where('id', $id)->first();
         if (!$enrollmentRequest)
             throw ValidationException::withMessages(['error' => 'there is no Provider Enrollment Request with id ' . $id]);
-            
+
         $provider = ServiceProvider::where('id', $enrollmentRequest->user_id)->first();
 
         if (!$provider)
@@ -52,7 +54,7 @@ class ProvidersController extends Controller
                 'activated' => true,
             ]);
         $enrollmentRequest->delete();
-        $provider->user->notify(new MessageNotification('provider enrollement', 'congratulation, your provider account enrollment is accepeted', 'user'));
+        $provider->user->notify(new ProviderEnrolled($provider));
 
         return ['success' => 'the provider enrollment request has been approved'];
     }
@@ -79,7 +81,7 @@ class ProvidersController extends Controller
             'activated' => true
         ]);
 
-        $provider->user->notify(new MessageNotification('provider activated', 'congratulation, your provider account is active now', 'user'));
+        $provider->user->notify(new ProviderAccountActivated($provider));
 
         return ['success' => 'the provider has been activated'];
     }

@@ -2,6 +2,8 @@
 
 namespace App\Notifications\provider;
 
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use App\Notifications\ExpoChannel;
 use Illuminate\Notifications\Notification;
@@ -12,14 +14,16 @@ class NewOrderCreated extends Notification
 {
     use Queueable;
 
+    public User $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user, Order $order)
     {
         //
+        $this->user = $user;
     }
 
     /**
@@ -34,29 +38,26 @@ class NewOrderCreated extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
+     * Get the database representation of the notification.
      *
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
         return [
-            //
+            'title' => 'new order',
+            'body' => 'created by ' . $this->user->name,
+        ];
+    }
+
+    
+    public function toExpoApp($notifiable)
+    {
+
+        return [
+            'title' => 'new order',
+            'body' => 'created by ' . $this->user->name,
         ];
     }
 }

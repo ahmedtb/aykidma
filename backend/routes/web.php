@@ -28,11 +28,11 @@ Route::view('/dashboard/{path}','dashboard')->where('path', '([A-z\d\-\/_.]+)?')
 
 Route::get('userNotificationTest', function () {
     $user = App\Models\User::where('id', 1)->first();
-    $user->notify(new App\Notifications\MessageNotification('title', 'body', 'user'));
+    // $user->notify(new App\Notifications\MessageNotification('title', 'body', 'user'));
     return 'notify success';
 });
 Route::get('providerNotificationTest', function () {
     $user = App\Models\User::where('id', 2)->first();
-    $user->notify(new App\Notifications\MessageNotification('titleP', 'bodyP', 'provider'));
+    // $user->notify(new App\Notifications\MessageNotification('titleP', 'bodyP', 'provider'));
     return 'notify success';
 });

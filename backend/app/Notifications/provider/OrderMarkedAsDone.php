@@ -8,7 +8,6 @@ use Illuminate\Bus\Queueable;
 use App\Notifications\ExpoChannel;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class OrderMarkedAsDone extends Notification
 {
