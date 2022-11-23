@@ -47,14 +47,20 @@ function FrontScreen(props) {
             screen: 'ServiceDetailsScreen', params: { service: service }
         })
     }
+    async function setup(){
+        setLoading(true)
+        await setupCategories()
+        setLoading(false)
+    }
 
     React.useEffect(() => {
-        setupCategories()
+        setup()
+
         // console.log(props.state)
     }, [])
 
     return (
-        <RefreshScrollView style={styles.container} refreshFunction={setupCategories} >
+        <RefreshScrollView style={styles.container} refreshFunction={setup} >
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'red', borderBottomWidth: 0.5, margin: 10, padding: 5 }}>
                 <View style={{ flexDirection: 'row' }}>
@@ -64,7 +70,7 @@ function FrontScreen(props) {
                 {props.state.user ?
                     <NotificationsBell /> : null}
             </View>
-            <Text style={{ fontSize: 20, backgroundColor: 'white', marginHorizontal: 20 }}>مرحبا بك في تطبيق خدمات...عن اي خدمة تبحث؟</Text>
+            <Text style={{ fontSize: 20, backgroundColor: 'white', marginHorizontal: 20 }}>مرحبا بك في تطبيق خدمات...عن اي نوع من الخدمات تبحث؟</Text>
 
             <View style={{
                 flexDirection: 'row',
@@ -124,7 +130,7 @@ function FrontScreen(props) {
                 {(props.state.categories && !services) ? (
                     props.state.categories.map((category, index) => (
                         <TouchableOpacity key={index} style={styles.categoryBox} onPress={() => props.navigation.navigate('ServicesScreen', { category: category })}>
-                            <Image style={{ borderWidth: 1 }} source={{ uri:  category.image }} style={{ width: 100, height: 100 }} />
+                            <Image style={{ borderWidth: 1,  width: 100, height: 100 }} source={{ uri:  category.image }} />
                             <Text style={styles.serviceLabel} >{category.name}</Text>
                         </TouchableOpacity>
                     ))
@@ -134,21 +140,18 @@ function FrontScreen(props) {
             </View>
 
             <View style={{
-                backgroundColor: 'yellow',
                 height: 100,
                 justifyContent: 'center',
                 alignItems: 'center',
                 margin: 10,
-                borderRadius: 5,
-                borderColor: 'red',
-                borderWidth: 0.6,
                 elevation: 3,
             }}>
-                <Text>هل انت مزود خدمة</Text>
-                <Pressable style={{ backgroundColor: 'red', borderRadius: 5, padding: 10 }}>
-                    <Text>تسجيل كمزود خدمة</Text>
+                <Text>هل لديك خدمات يمكنك تقديمها، إنضم إلى قائمة المزودين</Text>
+                <Pressable style={{ backgroundColor: 'red', borderRadius: 5, padding: 15, margin:6 }}>
+                    <Text style={{color: 'white'}}>تسجيل كمزود خدمة</Text>
                 </Pressable>
             </View>
+            <LoadingIndicator visibility={loading} />
 
 
         </RefreshScrollView>

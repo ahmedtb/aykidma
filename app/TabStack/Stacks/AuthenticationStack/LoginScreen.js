@@ -14,56 +14,56 @@ function LoginModal(props) {
     return (
 
         <View>
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={{
-                    textAlign: 'center',
-                    color: 'black',
-                    padding: 10,
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    borderBottomWidth: 1
-                }}>
-                    يرجى تسجيل الدخول
-                </Text>
+            <Text style={{
+                textAlign: 'center',
+                color: 'black',
+                padding: 10,
+                fontSize: 20,
+                fontWeight: 'bold',
+            }}>
+                يرجى تسجيل الدخول
+            </Text>
 
-            </View>
 
 
             <View style={{ flexDirection: 'row', marginVertical: 10 }}>
-                <Text style={{ fontSize: 20 }}>رقم الهاتف</Text>
                 <TextInput
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, textAlign: 'center', borderWidth: 1, padding: 5, borderRadius: 10, fontSize: 20 }}
                     value={phoneNumber}
                     keyboardType='phone-pad'
+                    autoComplete="username"
                     onChangeText={setPhoneNumber}
-                    autoCompleteType ="username"
+                    placeholder='رقم الهاتف'
                 />
             </View>
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={{ fontSize: 20 }}>كلمة المرور</Text>
+            <View style={{ flexDirection: 'row', marginVertical: 10 }}>
                 <TextInput
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, textAlign: 'center', borderWidth: 1, padding: 5, borderRadius: 10, fontSize: 20 }}
                     value={password}
+                    autoComplete="password"
                     onChangeText={setPassword}
-                    autoCompleteType ="password"
+                    placeholder='كلمة المرور'
+
                 />
             </View>
 
+
+
             <TouchableOpacity
-                style={{ alignSelf: 'center', backgroundColor: 'red', height: 50, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
+                style={{ alignSelf: 'center', marginVertical: 5, backgroundColor: 'red', height: 35, width: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
                 onPress={() => {
-                    // login(phoneNumber, password)
+                    console.log('loginscreen')
                     loginButton(phoneNumber, password)
-                }
-                }
+                }}
             >
-                <Text style={{ color: 'white' }}>
+                <Text style={{ color: 'white', fontSize: 20 }}>
                     دخول
                 </Text>
             </TouchableOpacity>
 
+
             <TouchableOpacity
-                style={{ alignSelf: 'center', backgroundColor: 'red', height: 50, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
+                style={{ alignSelf: 'center', marginVertical: 5, backgroundColor: 'red', height: 35, width: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
                 onPress={() => {
                     props.navigation.navigate(
                         'enrollment',
@@ -71,7 +71,7 @@ function LoginModal(props) {
                 }
                 }
             >
-                <Text style={{ color: 'white' }}>
+                <Text style={{ color: 'white', fontSize: 20 }}>
                     تسجيل حساب
                 </Text>
             </TouchableOpacity>

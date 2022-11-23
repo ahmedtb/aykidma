@@ -1,4 +1,4 @@
-import 'aykidma-app';
+// import 'aykidma-app';
 
 import React from 'react';
 import { I18nManager, LogBox } from 'react-native';

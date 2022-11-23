@@ -15,7 +15,6 @@ function LoginModal(props) {
                 backgroundColor: 'rgba(52, 52, 52, 0.6)',
             }}>
             <View style={{
-                height: '80%',
                 width: '80%',
                 backgroundColor: 'white',
                 padding: 10,
@@ -29,55 +28,53 @@ function LoginModal(props) {
                 shadowOpacity: 0.9,
                 shadowRadius: 40,
             }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text style={{
-                        textAlign: 'center',
-                        color: 'black',
-                        padding: 10,
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                        borderBottomWidth: 1
-                    }}>
-                        يرجى....تسجيل الدخول
-                    </Text>
+                <Text style={{
+                    textAlign: 'center',
+                    color: 'black',
+                    padding: 10,
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                }}>
+                    يرجى تسجيل الدخول
+                </Text>
 
-                </View>
 
 
                 <View style={{ flexDirection: 'row', marginVertical: 10 }}>
-                    <Text style={{ fontSize: 20 }}>رقم الهاتف</Text>
                     <TextInput
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, textAlign: 'center', borderWidth: 1, padding: 5, borderRadius: 10, fontSize: 20 }}
                         value={phoneNumber}
                         keyboardType='phone-pad'
                         autoComplete="username"
                         onChangeText={setPhoneNumber}
+                        placeholder='رقم الهاتف'
                     />
                 </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ fontSize: 20 }}>كلمة المرور</Text>
+                <View style={{ flexDirection: 'row', marginVertical: 10 }}>
                     <TextInput
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, textAlign: 'center', borderWidth: 1, padding: 5, borderRadius: 10, fontSize: 20 }}
                         value={password}
                         autoComplete="password"
                         onChangeText={setPassword}
+                        placeholder='كلمة المرور'
+
                     />
                 </View>
 
                 <TouchableOpacity
-                    style={{ alignSelf: 'center', backgroundColor: 'red', height: 50, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
+                    style={{ alignSelf: 'center', marginVertical: 5, backgroundColor: 'red', height: 35, width: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
                     onPress={() => {
                         console.log('loginscreen')
                         loginProcedure(phoneNumber, password)
                     }}
                 >
-                    <Text style={{ color: 'white' }}>
+                    <Text style={{ color: 'white', fontSize: 20 }}>
                         دخول
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={{ alignSelf: 'center', backgroundColor: 'red', height: 50, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
+                    style={{ alignSelf: 'center', marginVertical: 5, backgroundColor: 'red', height: 35, width: '100%', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}
                     onPress={() => {
                         props.navigation.navigate(
                             'enrollment',
@@ -85,7 +82,7 @@ function LoginModal(props) {
                     }
                     }
                 >
-                    <Text style={{ color: 'white' }}>
+                    <Text style={{ color: 'white', fontSize: 20 }}>
                         تسجيل حساب
                     </Text>
                 </TouchableOpacity>
