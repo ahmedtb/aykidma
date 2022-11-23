@@ -5,27 +5,23 @@ namespace App\Models;
 use App\casts\Json;
 use App\Models\Order;
 use App\Models\Service;
-use Illuminate\Support\Str;
-use Laravel\Sanctum\NewAccessToken;
-use App\Models\ProviderNotification;
 use App\Filters\ServiceProviderFilters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class ServiceProvider extends Authenticatable
+class ServiceProvider extends Model
 {
     use HasFactory, Notifiable;
 
     protected $casts = [
-        'address' => Json::class,
+        // 'address' => Json::class,
         'coverage' => Json::class,
         'meta_data' => Json::class,
     ];
 
     protected $hidden = [
-        'password',
+        // 'password',
         // 'image',
         'user_id'
     ];
@@ -46,10 +42,6 @@ class ServiceProvider extends Authenticatable
         return $this->hasManyThrough(Order::class, Service::class);
     }
 
-    public function notifications()
-    {
-        return $this->hasMany(ProviderNotification::class);
-    }
 
     public function routeNotificationForExpoApp()
     {

@@ -61,11 +61,6 @@ class User extends Authenticatable
         return $this->hasManyThrough(Review::class, Order::class);
     }
 
-    public function notifications()
-    {
-        return $this->hasMany(UserNotification::class);
-    }
-
     /**
      * Create a new personal access token for the user.
      *

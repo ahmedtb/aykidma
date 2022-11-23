@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\NotificationModel;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\ServiceProvider;
@@ -43,7 +44,6 @@ class DatabaseSeeder extends Seeder
         Order::factory(40)->create();
         Review::factory(40)->create();
 
-        UserNotification::factory(100)->create();
-        ProviderNotification::factory(100)->create();
+        NotificationModel::factory(100)->create();
     }
 }

@@ -15,10 +15,10 @@ class UserNotificationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Auth::user()->notifications()->get();
-        return UserNotification::where('user_id', Auth::user()->id)->get();
+        return $request->user()->notifications()->get();
+        // return UserNotification::where('user_id', $request->user()->id)->get();
     }
 
     // public function subscribe(Request $request)

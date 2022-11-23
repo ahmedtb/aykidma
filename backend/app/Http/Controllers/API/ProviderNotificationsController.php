@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ProviderNotificationsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Auth::user()->notifications()->get();
+        return $request->user()->notifications()->get();
     }
 }
