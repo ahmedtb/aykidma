@@ -6,7 +6,7 @@ use Mockery;
 use Tests\TestCase;
 use App\Models\User;
 use Mockery\MockInterface;
-use App\Models\UserNotification;
+use App\Models\NotificationModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Notifications\MessageNotification;
@@ -26,7 +26,7 @@ class UserNotificationsTest extends TestCase
      */
     public function test_user_can_fetch_his_notifications()
     {
-        UserNotification::factory()->create();
+        NotificationModel::factory()->create();
         $user = User::factory()->create();
         $this->actingAs($user, 'user');
 
@@ -38,7 +38,7 @@ class UserNotificationsTest extends TestCase
         
 
 
-        UserNotification::factory(2)->create(['user_id' => $user->id]);
+        NotificationModel::factory(2)->create(['user_id' => $user->id]);
         $response = $this->get('api/userNotifications');
         $this->assertEquals(sizeof($response->json()), 2);
         $response->assertStatus(200);

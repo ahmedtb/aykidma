@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Filters\ServiceProviderFilters;
 use App\Models\ProviderEnrollmentRequest;
 use Illuminate\Support\Facades\Validator;
-use App\Notifications\MessageNotification;
 use App\Filters\ProviderEnrollmentRequestFilters;
 use App\Notifications\user\ProviderAccountActivated;
 use App\Notifications\user\ProviderEnrolled;

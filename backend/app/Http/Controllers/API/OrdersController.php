@@ -2,26 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\User;
-
-use App\Models\Admin;
-use App\Models\Offer;
 use App\Models\Order;
 use App\Models\Review;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use App\Models\ServiceProvider;
 use App\Rules\ArrayOfFieldsRule;
 use App\FieldsTypes\ArrayOfFields;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Notifications\user\OrderAccpeted;
-use Illuminate\Support\Facades\Validator;
-use App\Notifications\MessageNotification;
 use Illuminate\Validation\ValidationException;
 use App\Notifications\provider\NewOrderCreated;
 use App\Notifications\Provider\OrderMarkedAsDone;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class OrdersController extends Controller
 {
