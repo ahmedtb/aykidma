@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
-import { getRandomKey } from '../../utility/helpers'
 import AllowedLink from '../../components/AllowedLink'
 import {Routes} from '../../utility/Urls'
+
 export default function ServiceProvidersTable(props) {
 
     const providers = props.providers
@@ -21,8 +21,8 @@ export default function ServiceProvidersTable(props) {
             </thead>
             <tbody>
                 {
-                    providers?.map(provider =>
-                        <tr key={getRandomKey()} onClick={() => handleShow(provider.id)}>
+                    providers?.map((provider,index) =>
+                        <tr key={index}>
                             <td>{provider.id}</td>
                             <td>{provider.name}</td>
                             <td>
@@ -31,8 +31,8 @@ export default function ServiceProvidersTable(props) {
                                 </AllowedLink>
                             </td>
                             <td>{provider.activated}</td>
-                            <td>{provider.coverage.map(coverage => (
-                                <div key={getRandomKey()} className="m-1">{coverage['city']} {coverage['area']}</div>
+                            <td>{provider.coverage.map((coverage, index) => (
+                                <div key={index} className="m-1">{coverage['city']} {coverage['area']}</div>
                             ))}</td>
                             <td>
                                 <img src={provider.image} height={100} />

@@ -19,8 +19,8 @@ export default function UsersTable(props) {
             </thead>
             <tbody>
                 {
-                    users?.map(user =>
-                        <tr key={getRandomKey()} onClick={() => handleShow(user.id)}>
+                    users?.map((user, index) =>
+                        <tr key={index} >
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>{user.phone_number}</td>

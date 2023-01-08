@@ -3,7 +3,7 @@ import React from "react";
 import { Table, Modal, Button } from "react-bootstrap";
 import { getRandomKey } from '../../utility/helpers'
 import ArrayOfFieldsRender from '../../FieldsTypes/ArrayOfFieldsRender'
-import {Routes} from '../../utility/Urls'
+import { Routes } from '../../utility/Urls'
 import AllowedLink from '../../components/AllowedLink'
 
 export default function OrdersTable(props) {
@@ -48,8 +48,8 @@ export default function OrdersTable(props) {
                 </thead>
                 <tbody>
                     {
-                        orders?.map(order =>
-                            <tr key={getRandomKey()} onClick={() => handleShow(order.id)}>
+                        orders?.map((order, index) =>
+                            <tr key={index} onClick={() => handleShow(order.id)}>
                                 <td>{order.id}</td>
                                 <td>{order.status}</td>
                                 <td>

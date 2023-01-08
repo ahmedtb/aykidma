@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Routes } from '../utility/Urls'
 import { Api } from '../utility/Urls'
 import { logError } from '../utility/helpers'
+import axios from 'axios';
 
 function AuthComponent(props) {
 

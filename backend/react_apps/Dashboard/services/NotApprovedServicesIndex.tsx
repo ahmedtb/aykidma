@@ -1,5 +1,5 @@
 import React from "react";
-import {Routes} from "../utility/Urls";
+import { Routes, Api } from "../utility/Urls";
 import { logError, ApiCallHandler } from "../utility/helpers";
 import AllowedLink from '../components/AllowedLink'
 import ArrayOfFieldsRender from "../FieldsTypes/ArrayOfFieldsRender";

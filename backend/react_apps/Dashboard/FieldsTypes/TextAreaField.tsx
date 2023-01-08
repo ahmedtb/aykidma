@@ -13,9 +13,9 @@ export function TextAreaFieldInput(props) {
         {(field.subLabel) ? (<div style={{ fontSize: 12 }}>{field.subLabel}</div>) : (null)}
 
         <input
-            multiline={true} numberOfLines={4} style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
-            onChangeText={(text) => {
-                dispatch(text)
+              style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
+            onChange={(e) => {
+                dispatch(e.target.value)
             }}
             value={field.value}
         />
@@ -38,11 +38,11 @@ export function TextAreaFieldFormView(props) {
     const field = props.field
 
     return <div style={{
-        marginHorizontal: 8,
+        marginRight: 8,
         borderWidth: 0.5,
         borderColor: '#d1c5c5',
         borderRadius: 10,
-        marginVertical: 5,
+        marginTop: 5,
     }}>
         <div style={{ flexDirection: 'row', borderBottomWidth: 0.5, }}>
         <BsCardList size={24} />
@@ -57,13 +57,13 @@ export function TextAreaFieldFormView(props) {
 
 export function TextAreaFieldCreator(props) {
     const set = props.set
-    return <div style={{ marginVertical: 10 }}>
+    return <div style={{ marginTop: 10 }}>
         <div>اكتب النص الذي يصف مساحة النص هذه للزبون</div>
         <input
-            style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
-            onChangeText={(text) => {
+            style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
+            onChange={(e) => {
                 set({
-                    label: text, class: TextAreaFieldClass, value: null
+                    label: e.target.value, class: TextAreaFieldClass, value: null
                 })
             }}
         />
@@ -79,31 +79,31 @@ export function TextAreaFieldEditor(props) {
 
     const [value, setvalue] = React.useState(field.value)
 
-    return <div style={{ marginVertical: 15 }}>
+    return <div style={{ marginTop: 15 }}>
         <div style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <div>حقل مساحة نصية</div>
         </div>
         <input style={{ fontSize: 20, fontWeight: 'bold', borderWidth: 1, borderColor: '#dec9c8', borderRadius: 7 }}
-            onChangeText={(text) => {
-                setlabel(text)
+            onChange={(e) => {
+                setlabel(e.target.value)
                 dispatch({
-                    class: TextAreaFieldClass, label: text, setsubLabel: subLabel, value: value
+                    class: TextAreaFieldClass, label: e.target.value, setsubLabel: subLabel, value: value
                 })
             }}
             value={field.label}
         />
         {(field.subLabel) ? (
             <input style={{ fontSize: 12, borderWidth: 1, borderColor: '#dec9c8', borderRadius: 7 }}
-                onChangeText={(text) => {
-                    setsubLabel(text)
+                onChange={(e) => {
+                    setsubLabel(e.target.value)
                     dispatch({
-                        class: TextAreaFieldClass, label: label, setsubLabel: text, value: value
+                        class: TextAreaFieldClass, label: label, setsubLabel: e.target.value, value: value
                     })
                 }}
                 value={field.subLabel}
             />
         ) : null}
 
-        <div style={{ borderWidth: 1, borderColor: '#e4f0ec', borderRadius: 10, marginVertical: 5, padding: 30, backgroundColor: 'grey' }} />
+        <div style={{ borderWidth: 1, borderColor: '#e4f0ec', borderRadius: 10, marginTop: 5, padding: 30, backgroundColor: 'grey' }} />
     </div>
 }

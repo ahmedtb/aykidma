@@ -28,7 +28,7 @@ export function ImageFieldInput(props) {
 export function ImageFieldRender(props) {
     const field = props.field
 
-    return <div style={{ marginVertical: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1 }}>
+    return <div style={{ marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1 }}>
         <div style={{ margin: 8 }}>
             <strong style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}>{field.label}</strong>
         </div>
@@ -42,11 +42,11 @@ export function ImageFieldFormView(props) {
     // const value = field.value.latitude + ", " + field.value.longitude;
     return (
         <div style={{
-            marginHorizontal: 8,
+            marginTop: 8,
             borderWidth: 0.5,
             borderColor: '#d1c5c5',
             borderRadius: 10,
-            marginVertical: 5,
+            marginBottom: 5,
         }}>
             <div style={{ flexDirection: 'row', borderBottomWidth: 0.5, }}>
                 <AiFillFileImage size={24} color="grey" />
@@ -67,13 +67,13 @@ export function ImageFieldFormView(props) {
 export function ImageFieldCreator(props) {
     const set = props.set
 
-    return <div style={{ marginVertical: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1 }}>
+    return <div style={{ marginTop: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1 }}>
         <strong>اكتب النص الذي يصف حقل تحديد الموقع للزبون</strong>
         <input
-            style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
-            onChangeText={(text) => {
+            style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
+            onChange={(e) => {
                 set({
-                    label: text,
+                    label: e.target.value,
                     class: ImageFieldClass,
                     value: null
                 })
@@ -96,10 +96,10 @@ export function ImageFieldEditor(props) {
         </div>
 
         <input style={{ fontSize: 12, borderWidth: 1, borderColor: '#dec9c8', borderRadius: 10 }}
-            onChangeText={(text) => {
-                setlabel(text)
+            onChange={(e) => {
+                setlabel(e.target.value)
                 dispatch({
-                    class: ImageFieldClass, label: text, value: value
+                    class: ImageFieldClass, label: e.target.value, value: value
                 })
             }}
             value={field.label}

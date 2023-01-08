@@ -19,7 +19,7 @@ export default function ReportsTable(props) {
                 <tbody>
                     {
                         reports?.map((report, index) =>
-                            <tr key={index} onClick={() => handleShow(report.id)}>
+                            <tr key={index}>
                                 <td>{report.id}</td>
                                 <td>{report.name}</td>
                                 <td>{report.phone_number}</td>

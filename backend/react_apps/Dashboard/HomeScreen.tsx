@@ -7,7 +7,24 @@ import { Row, Col } from 'react-bootstrap'
 import ReportsTable from "./components/ReportsTable"
 
 export default function HomeScreen(props) {
-    const [data, setdata] = React.useState()
+    const [data, setdata] = React.useState<{
+        usersCount: number,
+        ProvidersCount: number,
+        activatedProvidersCount: number,
+        adminsCount: number,
+        categoriesCount: number,
+        ordersCount: number,
+        reviewsCount: number,
+        providerEnrollmentRequestsCount: number,
+        providerNotificationsCount: number,
+        reportsCount: number,
+        approvedServicesCount: number,
+        notApprovedServicesCount: number,
+        userNotificationsCount: number,
+        latestOrders: orders,
+        latestReports: reports,
+        latestReviews: reviews,
+    }>()
     React.useEffect(() => {
         ApiCallHandler(
             async () => await Api.home(),
@@ -41,7 +58,7 @@ export default function HomeScreen(props) {
                     <OrdersTable orders={data?.latestOrders} />
                     <h4>اخر {data?.latestReports.length} تقارير</h4>
                     <ReportsTable reports={data?.latestReports} />
-                
+
                     <h4>اخر {data?.latestReviews.length} تقييمات</h4>
                     <ReviewsTable reviews={data?.latestReviews} />
                 </Col>

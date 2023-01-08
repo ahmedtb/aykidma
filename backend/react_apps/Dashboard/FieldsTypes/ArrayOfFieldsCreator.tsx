@@ -80,7 +80,7 @@ export default function ArrayOfFieldsCreator(props) {
                     setfield({})
                     setSelectedType(null)
                 }}
-                style={{ alignSelf: 'flex-end', backgroundColor: 'red', width: '20%', padding: 10, marginVertical: 5, justifyContent: 'center', borderRadius: 19 }}
+                style={{ alignSelf: 'flex-end', backgroundColor: 'red', width: '20%', padding: 10, marginTop: 5, justifyContent: 'center', borderRadius: 19 }}
             >
                 <strong style={{ textAlign: 'center', color: 'white', fontSize: 10 }}>اضف الحقل</strong>
             </button>

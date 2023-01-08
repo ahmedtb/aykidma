@@ -23,7 +23,7 @@ export default function UserNotificationsTable(props) {
             <tbody>
                 {
                     notifications?.map((notification, index) =>
-                        <tr key={index} onClick={() => handleShow(notification.id)}>
+                        <tr key={index} >
                             <td>{notification.id}</td>
                             <td>{notification.title}</td>
                             <td>{notification.body}</td>

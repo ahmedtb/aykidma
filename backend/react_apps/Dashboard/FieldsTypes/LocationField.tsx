@@ -37,11 +37,11 @@ export function LocationFieldFormView(props) {
     const value = field.value.latitude + ", " + field.value.longitude;
     return (
         <div style={{
-            marginHorizontal: 8,
+            marginRight: 8,
             borderWidth: 0.5,
             borderColor: '#d1c5c5',
             borderRadius: 10,
-            marginVertical: 5,
+            marginTop: 5,
         }}>
             <div style={{ flexDirection: 'row', borderBottomWidth: 0.5, }}>
                 <AiFillFileImage  size={24} />
@@ -50,7 +50,7 @@ export function LocationFieldFormView(props) {
                     <div style={{ color: 'grey', fontSize: 10, }}>حقل اختيار صورة</div>
                 </div>
             </div>
-            <button style={{ flex: 1, backgroundColor: '#d1c5c5' }} onPress={() => setLocationModalVisibility(true)}>
+            <button style={{ flex: 1, backgroundColor: '#d1c5c5' }} onClick={() => setLocationModalVisibility(true)}>
                 <div style={{ color: 'blue', fontSize: 20, textAlign: 'center' }}>{value}</div>
             </button>
             {/* <LocationModal
@@ -64,13 +64,13 @@ export function LocationFieldFormView(props) {
 
 export function LocationFieldCreator(props) {
     const set = props.set
-    return <div style={{ marginVertical: 10 }}>
+    return <div style={{ marginTop: 10 }}>
         <div>اكتب النص الذي يصف حقل تحديد الموقع للزبون</div>
         <input
-            style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
-            onChangeText={(text) => {
+            style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
+            onChange={(e) => {
                 set({
-                    label: text, class: LocationFieldClass,
+                    label: e.target.value, class: LocationFieldClass,
                     value: {
                         latitude: null,
                         longitude: null
@@ -98,14 +98,14 @@ export function LocationFieldEditor(props) {
         <div style={{ margin: 8 }}>
 
             <input style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', borderWidth: 1, borderColor: '#dec9c8', borderRadius: 7 }}
-                onChange={(text) => {
-                    setlabel(text)
+                onChange={(e) => {
+                    setlabel(e.target.value)
                     dispatch({
-                        class: LocationFieldClass, label: text, value: field.value
+                        class: LocationFieldClass, label: e.target.value, value: field.value
                     })
                 }}
                 value={label}
-                multiline={true}
+                
             />
         </div>
         <img src={'/assets/MapIcon.png'} style={{ width: 100, height: 100 }} />

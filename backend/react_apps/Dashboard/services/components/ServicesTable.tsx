@@ -25,8 +25,8 @@ export default function ServicesTable(props) {
                 </thead>
                 <tbody>
                     {
-                        services?.map(service =>
-                            <tr key={getRandomKey()} onClick={() => handleShow(service.id)}>
+                        services?.map((service, index) =>
+                            <tr key={index} >
                                 <td>
                                     <AllowedLink to={Routes.showService(service.id)}>
                                         {service.id}

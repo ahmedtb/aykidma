@@ -9,9 +9,9 @@ export function StringFieldInput(props) {
     return <div >
         <div style={{ fontSize: 20, fontWeight: 'bold' }}>{field.label}</div>
         <input
-            style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
-            onChangeText={(text) => {
-                dispatch(text)
+            style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
+            onChange={(e) => {
+                dispatch(e.target.value)
             }}
             value={field.value}
         />
@@ -23,7 +23,7 @@ export function StringFieldRender(props) {
     return <div >
         <div>{field.label}</div>
         <input
-            style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
+            style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
             value={field.value??''}
             disabled
         />
@@ -33,11 +33,11 @@ export function StringFieldRender(props) {
 export function StringFieldFormView(props) {
     const field = props.field
     return <div style={{
-        marginHorizontal: 8,
+        marginRight: 8,
         borderWidth: 0.5,
         borderColor: '#d1c5c5',
         borderRadius: 10,
-        marginVertical: 5,
+        marginTop: 5,
     }}>
         <div style={{ flexDirection: 'row', borderBottomWidth: 0.5, }}>
             <BsCardList size={24} />
@@ -55,13 +55,13 @@ export function StringFieldFormView(props) {
 export function StringFieldCreator(props) {
     const set = props.set
 
-    return <div style={{ marginVertical: 10 }}>
+    return <div style={{ marginTop: 10 }}>
         <div>اكتب النص الذي يصف هذا الحقل للزبون</div>
         <input
-            style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5 }}
-            onChangeText={(text) => {
+            style={{ borderWidth: 1, borderRadius: 10, marginTop: 5 }}
+            onChange={(e) => {
                 set({
-                    label: text, class: StringFieldClass, value: null
+                    label: e.target.value, class: StringFieldClass, value: null
                 })
             }}
         />
@@ -75,25 +75,25 @@ export function StringFieldEditor(props) {
     const [value, setvalue] = React.useState(field.value)
 
     return (
-        <div style={{ marginVertical: 15 }}>
+        <div style={{ marginTop: 15 }}>
 
             <div style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <div>حقل نصي</div>
             </div>
 
             <input style={{ fontSize: 12, borderWidth: 1, borderColor: '#dec9c8', borderRadius: 10 }}
-                onChangeText={(text) => {
-                    setlabel(text)
+                onChange={(e) => {
+                    setlabel(e.target.value)
                     dispatch({
-                        class: StringFieldClass, label: text, value: value
+                        class: StringFieldClass, label: e.target.value, value: value
                     })
                 }}
                 value={label}
             />
             <input
-                style={{ borderWidth: 1, borderColor: '#dec9c8', borderRadius: 10, marginVertical: 5 }}
-                onChangeText={(text) => {
-                    setvalue(text)
+                style={{ borderWidth: 1, borderColor: '#dec9c8', borderRadius: 10, marginTop: 5 }}
+                onChange={(e) => {
+                    setvalue(e.target.value)
                     dispatch({
                         class: StringFieldClass, label: label, value: value
                     })

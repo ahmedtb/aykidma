@@ -6,7 +6,7 @@ import LoginPageScreen from '../LoginPageScreen'
 
 import CategoriesScreen from '../CategoriesScreen'
 
-import ServiceProviderShow from '../serviceprovider/ServiceProviderShow'
+import ServiceProviderShow from '../serviceProvider/ServiceProviderShow'
 import ServiceProvidersIndex from '../serviceProvider/ServiceProvidersIndex'
 import providerEnrollmentRequestsIndex from '../serviceProvider/ProviderEnrollmentRequestIndex'
 

@@ -17,16 +17,16 @@ export const Routes = {
     resumedOrders: () => '/dashboard/resumedorders/',
     doneOrders: () => '/dashboard/doneorders/',
     reviewsIndex: () => '/dashboard/reviews',
-    showOrder: (id) => id ? '/dashboard/orders/' + id : '/dashboard/orders/:id',
+    showOrder: (id?: number) => id ? '/dashboard/orders/' + id : '/dashboard/orders/:id',
 
-    showService: (id) => id ? '/dashboard/services/' + id : '/dashboard/services/:id',
-    showProvider: (id) => id ? '/dashboard/providers/' + id : '/dashboard/providers/:id',
+    showService: (id?: number) => id ? '/dashboard/services/' + id : '/dashboard/services/:id',
+    showProvider: (id?: number) => id ? '/dashboard/providers/' + id : '/dashboard/providers/:id',
 
     usersIndex: () => '/dashboard/users',
-    showUser: (id) => id ? '/dashboard/users/' + id : '/dashboard/users/:id',
+    showUser: (id?: number) => id ? '/dashboard/users/' + id : '/dashboard/users/:id',
 
     reportsIndex: () => '/dashboard/reports',
-    showReport: (id) => id ? '/dashboard/reports/' + id : '/dashboard/reports/:id',
+    showReport: (id?: number) => id ? '/dashboard/reports/' + id : '/dashboard/reports/:id',
 
     userNotificationsIndex: () => '/dashboard/userNotifications',
     providerNotificationsIndex: () => '/dashboard/providerNotifications',
@@ -40,16 +40,16 @@ export const Api = {
     logoutAdmin: '/dashboardAPI/logoutAdmin',
     home: async () => await axios.get('/dashboardAPI/home'),
 
-    approveService: async (id) => await axios.put('/dashboardAPI/approve/service', { service_id: id }),
-    rejectService: async (id) => await axios.delete('/dashboardAPI/reject/service', { params: { service_id: id } }),
-    approveProviderEnrollment: async (id) => id ? await axios.get(`/dashboardAPI/approve/providerEnrollment/${id}`) : await axios.get('/dashboardAPI/approve/providerEnrollment/:id'),
-    rejectProviderEnrollment: async (id) => id ? await axios.delete(`/dashboardAPI/reject/providerEnrollment/${id}`) : await axios.delete('/dashboardAPI/reject/providerEnrollment/:id'),
+    approveService: async (id?: number) => await axios.put('/dashboardAPI/approve/service', { service_id: id }),
+    rejectService: async (id?: number) => await axios.delete('/dashboardAPI/reject/service', { params: { service_id: id } }),
+    approveProviderEnrollment: async (id?: number) => id ? await axios.get(`/dashboardAPI/approve/providerEnrollment/${id}`) : await axios.get('/dashboardAPI/approve/providerEnrollment/:id'),
+    rejectProviderEnrollment: async (id?: number) => id ? await axios.delete(`/dashboardAPI/reject/providerEnrollment/${id}`) : await axios.delete('/dashboardAPI/reject/providerEnrollment/:id'),
 
     activateProvider: '/dashboardAPI/activateProvider/:id',
     deleteReview: '/dashboardAPI/order/deleteReview',
 
     fetchCategories: async () => { return await axios.get('/dashboardAPI/category') },
-    destroyCategory: async (id) => { return await axios.delete('/dashboardAPI/category/' + id) },
+    destroyCategory: async (id?: number) => { return await axios.delete('/dashboardAPI/category/' + id) },
     createCategory: async (name, image, parent_id) => { return await axios.post('/dashboardAPI/category', { name: name, image: image, parent_id: parent_id }) },
     editcategory: async (id, name, image, parent_id) => {
         return await axios.put('/dashboardAPI/category/' + id, {
@@ -64,7 +64,7 @@ export const Api = {
             with: withs,
         }
     }),
-    fetchProvider: async (id) => await axios.get('/dashboardAPI/providers/' + id),
+    fetchProvider: async (id?: number) => await axios.get('/dashboardAPI/providers/' + id),
     fetchProviderEnrollmentRequests: async () => await axios.get('/dashboardAPI/providerEnrollmentRequests'),
 
     fetchOrders: async (status = null, withs = []) => await axios.get('/dashboardAPI/orders/', {

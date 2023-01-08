@@ -21,7 +21,7 @@ export default function ProviderNotificationsTable(props) {
             <tbody>
                 {
                     providerNotifications?.map(notification =>
-                        <tr key={getRandomKey()} onClick={() => handleShow(notification.id)}>
+                        <tr key={getRandomKey()} >
                             <td>{notification.id}</td>
                             <td>{notification.name}</td>
                             <td>{notification.phone_number}</td>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Api} from "../utility/Urls";
 import { ApiCallHandler } from "../utility/helpers";
-import ServiceProvidersTable from './components/ServiceProvidersTable'
+import ServiceProvidersTable from "./components/ServiceProvidersTable";
 
 export default function ServiceProvidersIndex(props) {
     const [providers, setproviders] = React.useState([])

@@ -38,11 +38,11 @@ export function OptionsFieldRender(props) {
 export function OptionsFieldFormView(props) {
     const field = props.field
     return <div style={{
-        marginHorizontal: 8,
+        marginRight: 8,
         borderWidth: 0.5,
         borderColor: '#d1c5c5',
         borderRadius: 10,
-        marginVertical: 5,
+        marginTop: 5,
     }}>
         <div style={{ flexDirection: 'row', borderBottomWidth: 0.5, }}>
             <BsCardList size={24} />
@@ -83,9 +83,9 @@ export function OptionsFieldCreator(props) {
         <div>
 
             <div>اكتب النص الذي يصف مساحة النص هذه للزبون</div>
-            <divInput style={{ fontSize: 20, fontWeight: 'bold', borderWidth: 1, borderRadius: 7 }}
-                onChangeText={(text) => {
-                    addLabel(text)
+            <input style={{ fontSize: 20, fontWeight: 'bold', borderWidth: 1, borderRadius: 7 }}
+                onChange={(e) => {
+                    addLabel(e.target.value)
                 }}
             />
 
@@ -97,9 +97,9 @@ export function OptionsFieldCreator(props) {
                 ))
             }
 
-            <divInput style={{ fontSize: 12, borderWidth: 1 }}
+            <input style={{ fontSize: 12, borderWidth: 1 }}
                 value={title}
-                onChangeText={setTitle}
+                onChange={setTitle}
             />
             <button onClick={() => {
                 addTitle(title)
@@ -130,15 +130,15 @@ export function OptionsFieldEditor(props) {
     }
 
 
-    return <div style={{ marginVertical: 15 }}>
+    return <div style={{ marginTop: 15 }}>
         <div style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <div>حقل اختياري</div>
         </div>
-        <divInput style={{ fontSize: 20, fontWeight: 'bold', borderWidth: 1, borderColor: '#dec9c8', borderRadius: 7 }}
-            onChangeText={(text) => {
-                setlabel(text)
+        <input style={{ fontSize: 20, fontWeight: 'bold', borderWidth: 1, borderColor: '#dec9c8', borderRadius: 7 }}
+            onChange={(e) => {
+                setlabel(e.target.value)
                 dispatch({
-                    label: text, class: OptionsFieldClass, options: options, value: null
+                    label: e.target.value, class: OptionsFieldClass, options: options, value: null
                 })
             }}
             value={field.label}
@@ -146,7 +146,7 @@ export function OptionsFieldEditor(props) {
         <div >
             <div style={{ padding: 5 }}>
                 <button onClick={() => setVisible(true)}>
-                    <div style={{ borderWidth: 1, borderRadius: 10, marginVertical: 5, textAlign: 'center', padding: 7, fontSize: 18 }}>
+                    <div style={{ borderWidth: 1, borderRadius: 10, marginTop: 5, textAlign: 'center', padding: 7, fontSize: 18 }}>
                         {field.options.map((title, index) => (
                             <div key={index}>{title}</div>
                         ))}
@@ -158,8 +158,8 @@ export function OptionsFieldEditor(props) {
 
                 <div>
                     {options.map((title, index) => (
-                        <divInput key={index} style={{ fontSize: 12, borderWidth: 1 }}
-                            onChangeText={(text) => {
+                        <input key={index} style={{ fontSize: 12, borderWidth: 1 }}
+                            onChange={(e) => {
                                 onTitleChange(text, index)
                             }}
                             value={title}
