@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Rules\Base64Rule;
 use App\Models\Category;
+use App\Rules\Base64Rule;
 use Illuminate\Http\Request;
+use App\Filters\CategoryFilters;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
@@ -14,11 +15,11 @@ class CategoryController extends Controller
      *
      * @return Illuminate\Database\Eloquent\Collection
      */
-    public function index()
+    public function index(Request $request, CategoryFilters $filters)
     {
-        $categories = Category::with('children')->whereNull('parent_id')->get();
-
-        return $categories;
+        return Category::filter($filters)
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
 
     /**
@@ -39,6 +40,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $validatedData = $this->validate($request, [
             'name'      => 'required|min:3|max:255|string',
             'image' => ['required', new Base64Rule(12000000)],
@@ -47,12 +49,7 @@ class CategoryController extends Controller
 
         // $imagePath = storeBase64PngFile($request->image);
 
-        Category::create([
-            'name'      => $request->name,
-            // 'image' => $imagePath,
-            'image' => $request->image,
-            'parent_id' => $request->parent_id
-        ]);
+        Category::create($validatedData);
 
         return response(['success' => 'You have successfully created a Category!']);
     }

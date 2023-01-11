@@ -3,9 +3,6 @@ import Roles from './Roles'
 
 import HomeScreen from '../HomeScreen'
 import LoginPageScreen from '../LoginPageScreen'
-
-import CategoriesScreen from '../CategoriesScreen'
-
 import ServiceProviderShow from '../serviceProvider/ServiceProviderShow'
 import ServiceProvidersIndex from '../serviceProvider/ServiceProvidersIndex'
 import providerEnrollmentRequestsIndex from '../serviceProvider/ProviderEnrollmentRequestIndex'
@@ -24,8 +21,9 @@ import ReviewsIndex from '../orders/ReviewIndex'
 import OrderShow from '../orders/OrderShow'
 import ReportsIndex from '../report/ReportsIndex'
 import ReportShow from '../report/ReportShow'
+import CategoryEditCreate from '../category/CategoryEditCreate'
 
-export default [
+const configs:  routeConfigsType = [
     {
         component: HomeScreen,
         path: Routes.dashboard(),
@@ -45,9 +43,9 @@ export default [
         exact: true,
     },
     {
-        component: CategoriesScreen,
+        component: CategoryEditCreate,
         path: Routes.CategoriesScreen(),
-        title: 'CategoriesScreen',
+        title: 'CategoryEditCreate',
         permission: [
             // Roles.ADMIN,
         ],
@@ -216,3 +214,4 @@ export default [
         exact: true,
     },
 ]
+export default configs

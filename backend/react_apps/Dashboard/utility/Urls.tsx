@@ -35,62 +35,58 @@ export const Routes = {
 
 
 export const Api = {
-    login: async (phone_number, password) => await axios.post('/dashboardAPI/loginAdmin', { phone_number: phone_number, password: password }),
-    fetchAdmin: async () => await axios.get('/dashboardAPI/fetchAdmin'),
+    login: (phone_number, password) => axios.post('/dashboardAPI/loginAdmin', { phone_number: phone_number, password: password }),
+    fetchAdmin: () => axios.get('/dashboardAPI/fetchAdmin'),
     logoutAdmin: '/dashboardAPI/logoutAdmin',
-    home: async () => await axios.get('/dashboardAPI/home'),
+    home: () => axios.get('/dashboardAPI/home'),
 
-    approveService: async (id?: number) => await axios.put('/dashboardAPI/approve/service', { service_id: id }),
-    rejectService: async (id?: number) => await axios.delete('/dashboardAPI/reject/service', { params: { service_id: id } }),
-    approveProviderEnrollment: async (id?: number) => id ? await axios.get(`/dashboardAPI/approve/providerEnrollment/${id}`) : await axios.get('/dashboardAPI/approve/providerEnrollment/:id'),
-    rejectProviderEnrollment: async (id?: number) => id ? await axios.delete(`/dashboardAPI/reject/providerEnrollment/${id}`) : await axios.delete('/dashboardAPI/reject/providerEnrollment/:id'),
+    approveService: (id?: number) => axios.put('/dashboardAPI/approve/service', { service_id: id }),
+    rejectService: (id?: number) => axios.delete('/dashboardAPI/reject/service', { params: { service_id: id } }),
+    approveProviderEnrollment: (id?: number) => id ? axios.get(`/dashboardAPI/approve/providerEnrollment/${id}`) : axios.get('/dashboardAPI/approve/providerEnrollment/:id'),
+    rejectProviderEnrollment: (id?: number) => id ? axios.delete(`/dashboardAPI/reject/providerEnrollment/${id}`) : axios.delete('/dashboardAPI/reject/providerEnrollment/:id'),
 
     activateProvider: '/dashboardAPI/activateProvider/:id',
     deleteReview: '/dashboardAPI/order/deleteReview',
 
-    fetchCategories: async () => { return await axios.get('/dashboardAPI/category') },
-    destroyCategory: async (id?: number) => { return await axios.delete('/dashboardAPI/category/' + id) },
-    createCategory: async (name, image, parent_id) => { return await axios.post('/dashboardAPI/category', { name: name, image: image, parent_id: parent_id }) },
-    editcategory: async (id, name, image, parent_id) => {
-        return await axios.put('/dashboardAPI/category/' + id, {
-            name: name,
-            image: image,
-            parent_id: parent_id,
-        })
+    fetchCategories: (params?) => { return axios.get('/dashboardAPI/category', { params: params }) },
+    destroyCategory: (id?: number) => { return axios.delete('/dashboardAPI/category/' + id) },
+    createCategory: (params) => { return axios.post('/dashboardAPI/category', params) },
+    editcategory: (id, params?) => {
+        return axios.put('/dashboardAPI/category/' + id, params)
     },
-    fetchProviders: async (activated = null, withs = []) => await axios.get('/dashboardAPI/providers/', {
+    fetchProviders: (activated = null, withs = []) => axios.get('/dashboardAPI/providers/', {
         params: {
             activated: activated ? activated : undefined,
             with: withs,
         }
     }),
-    fetchProvider: async (id?: number) => await axios.get('/dashboardAPI/providers/' + id),
-    fetchProviderEnrollmentRequests: async () => await axios.get('/dashboardAPI/providerEnrollmentRequests'),
+    fetchProvider: (id?: number) => axios.get('/dashboardAPI/providers/' + id),
+    fetchProviderEnrollmentRequests: () => axios.get('/dashboardAPI/providerEnrollmentRequests'),
 
-    fetchOrders: async (status = null, withs = []) => await axios.get('/dashboardAPI/orders/', {
+    fetchOrders: (status = null, withs = []) => axios.get('/dashboardAPI/orders/', {
         params: {
             status: status ? status : undefined,
             with: withs,
         }
     }),
 
-    fetchServices: async (approved = null, withs = []) => await axios.get('/dashboardAPI/services/', {
+    fetchServices: (approved = null, withs = []) => axios.get('/dashboardAPI/services/', {
         params: {
             approved: approved ? approved : undefined,
             with: withs,
         }
     }),
-    fetchService: async (id, withs = []) => await axios.get('/dashboardAPI/services/' + id, { params: { with: withs, } }),
+    fetchService: (id, withs = []) => axios.get('/dashboardAPI/services/' + id, { params: { with: withs, } }),
 
-    fetchUsers: async (withs = []) => await axios.get('/dashboardAPI/users', { params: { with: withs } }),
-    fetchUser: async (id, withs = []) => await axios.get('/dashboardAPI/users/' + id, { params: { with: withs } }),
+    fetchUsers: (withs = []) => axios.get('/dashboardAPI/users', { params: { with: withs } }),
+    fetchUser: (id, withs = []) => axios.get('/dashboardAPI/users/' + id, { params: { with: withs } }),
 
-    fetchReports: async (withs = []) => await axios.get('/dashboardAPI/reports', { params: { with: withs } }),
-    fetchReport: async (id, withs = []) => await axios.get('/dashboardAPI/reports/' + id, { params: { with: withs } }),
+    fetchReports: (withs = []) => axios.get('/dashboardAPI/reports', { params: { with: withs } }),
+    fetchReport: (id, withs = []) => axios.get('/dashboardAPI/reports/' + id, { params: { with: withs } }),
 
-    fetchUserNotifications: async (withs = []) => await axios.get('/dashboardAPI/userNotifications', { params: { with: withs } }),
+    fetchUserNotifications: (withs = []) => axios.get('/dashboardAPI/userNotifications', { params: { with: withs } }),
 
-    fetchProviderNotifications: async (withs = []) => await axios.get('/dashboardAPI/providerNotifications', { params: { with: withs } }),
+    fetchProviderNotifications: (withs = []) => axios.get('/dashboardAPI/providerNotifications', { params: { with: withs } }),
 
-    fetchReviews: async (withs = []) => await axios.get('/dashboardAPI/reviews', { params: { with: withs } }),
+    fetchReviews: (withs = []) => axios.get('/dashboardAPI/reviews', { params: { with: withs } }),
 }
